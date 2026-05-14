@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Students Think Profile Building Is vs What Universities Actually Value</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f4f6f9;
+            --primary-color: #1a73e8;
+            --wrong-color: #d93025;
+            --correct-color: #188038;
+            --card-bg: #ffffff;
+            --text-main: #202124;
+            --text-muted: #5f6368;
+            --shadow-soft: 0 4px 6px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 10px 20px rgba(0, 0, 0, 0.08), 0 6px 6px rgba(0, 0, 0, 0.05);
+            --radius: 16px;
+            --transition-speed: 300ms;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 2rem 1.25rem;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            padding: 3rem 1.5rem;
+            background: linear-gradient(135deg, #1a73e8 0%, #1557b0 100%);
+            border-radius: var(--radius);
+            box-shadow: 0 8px 24px rgba(26, 115, 232, 0.25);
+            color: white;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            line-height: 1.3;
+            letter-spacing: -0.02em;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn {
+            background-color: var(--card-bg);
+            color: var(--text-main);
+            border: 1px solid #dadce0;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .btn:hover {
+            background-color: #f8faff;
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(26, 115, 232, 0.1);
+        }
+
+        .accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-soft);
+            overflow: hidden;
+            transition: all var(--transition-speed) ease;
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-2px);
+            border-color: rgba(26, 115, 232, 0.1);
+        }
+
+        .card.active {
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .card-header {
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            background-color: transparent;
+            user-select: none;
+            transition: background-color var(--transition-speed) ease;
+        }
+
+        .card-header:hover {
+            background-color: #fbfdff;
+        }
+
+        .card-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text-main);
+            transition: color var(--transition-speed) ease;
+        }
+
+        .card.active .card-title {
+            color: var(--primary-color);
+        }
+
+        .icon-arrow {
+            width: 20px;
+            height: 20px;
+            transition: transform var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+            fill: none;
+            stroke: var(--text-muted);
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .card.active .icon-arrow {
+            transform: rotate(180deg);
+            stroke: var(--primary-color);
+        }
+
+        .card-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1), opacity var(--transition-speed) ease;
+            opacity: 0;
+            background-color: #fafbfc;
+        }
+
+        .card.active .card-content {
+            opacity: 1;
+        }
+
+        .content-inner {
+            padding: 0 1.5rem 1.5rem 1.5rem;
+            border-top: 1px solid #f1f3f4;
+            margin-top: 0.25rem;
+            padding-top: 1.25rem;
+            font-size: 1.05rem;
+            color: #3c4043;
+        }
+
+        p { margin-bottom: 1rem; }
+        p:last-child { margin-bottom: 0; }
+        
+        .quote {
+            font-style: italic;
+            color: var(--primary-color);
+            font-weight: 500;
+            border-left: 3px solid rgba(26, 115, 232, 0.3);
+            background: #f8faff;
+            padding: 1rem;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 1rem;
+        }
+
+        ul {
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .bullet-list li::before {
+            content: "•";
+            color: var(--primary-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+            line-height: 1.5;
+        }
+
+        .num-list {
+            list-style-type: decimal;
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .num-list li {
+            padding-left: 0.5rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .wrong-icon { color: var(--wrong-color); font-weight: bold; margin-right: 0.5rem; }
+        .correct-icon { color: var(--correct-color); font-weight: bold; margin-right: 0.5rem; }
+        
+        .wrong-text { color: var(--wrong-color); font-weight: 600; }
+        .correct-text { color: var(--correct-color); font-weight: 600; }
+
+        .vs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .vs-card {
+            background: white;
+            padding: 1.25rem;
+            border-radius: 12px;
+            border: 1px solid #e8eaed;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .vs-card h4 {
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 1px solid #e8eaed;
+            padding-bottom: 0.5rem;
+        }
+
+        .formula-box {
+            background: linear-gradient(135deg, #f8faff 0%, #e8f0fe 100%);
+            border: 1px solid rgba(26, 115, 232, 0.2);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin: 1.5rem 0;
+            box-shadow: 0 4px 6px rgba(26,115,232,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .formula-arrow {
+            color: var(--text-muted);
+        }
+
+        .timeline {
+            border-left: 2px solid #e8eaed;
+            margin-left: 0.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .timeline-item {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -1.85rem;
+            top: 0.3rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            border: 2px solid white;
+            box-shadow: 0 0 0 2px rgba(26,115,232,0.2);
+        }
+
+        .timeline-title {
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 0.25rem;
+        }
+
+        .example-block {
+            margin-bottom: 1.5rem;
+            background: white;
+            padding: 1.25rem;
+            border-radius: 12px;
+            border: 1px solid #e8eaed;
+            margin-bottom: 1rem;
+        }
+        .example-block h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+        .example-item {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .student-profile {
+            background: white;
+            padding: 1.25rem;
+            border-radius: 12px;
+            border: 1px solid #e8eaed;
+            margin-bottom: 1rem;
+        }
+        .student-profile h4 {
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            header { padding: 2.5rem 1rem; }
+            .vs-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .card-header { padding: 1.1rem 1.25rem; }
+            .content-inner { padding: 0 1.25rem 1.25rem 1.25rem; }
+            .formula-box { flex-direction: column; gap: 0.5rem; }
+            .formula-arrow { transform: rotate(90deg); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>What Students Think Profile Building Is<br>vs<br>What Universities Actually Value</h1>
+    </header>
+
+    <div class="controls">
+        <button id="expandAll" class="btn">Expand All</button>
+        <button id="collapseAll" class="btn">Collapse All</button>
+    </div>
+
+    <div class="accordion" id="accordion">
+        
+        <!-- SECTION 1 -->
+        <div class="card active">
+            <div class="card-header">
+                <div class="card-title">Opening</div>
+                <svg class="icon-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            <div class="card-content">
+                <div class="content-inner">
+                    <p class="quote">“The best time to start profile building is today. Not after exams. Not after boards. Today.”</p>
+                    <p class="quote">“But first, let’s correct what most students misunderstand about profile building.”</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 2 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">What Students Think Profile Building Is</div>
+                <svg class="icon-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            <div class="card-content">
+                <div class="content-inner">
+                    <ul class="bullet-list">
+                        <li>Collecting certificates</li>
+                        <li>Doing MUN, coding, volunteering because others do it</li>
+                        <li>Joining many activities for resume</li>
+                        <li>Following what toppers are doing</li>
+                        <li>Adding lines to a CV</li>
+                    </ul>
+                    <p class="quote">“This looks impressive to relatives. Not to universities.”</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 3 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">What Universities Actually Value</div>
+                <svg class="icon-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            <div class="card-content">
+                <div class="content-inner">
+                    <ul class="bullet-list">
+                        <li>Clear direction of interest</li>
+                        <li>Depth over number of activities</li>
+                        <li>Evidence of thinking, creating, solving</li>
+                        <li>Consistency over time</li>
+                        <li>Real impact, not participation</li>
+                        <li>A story that makes sense</li>
+                    </ul>
+                    <p class="quote">“Universities don’t count activities. They read patterns.”</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 4 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Checklist vs Brand Thinking</div>
+                <svg class="icon-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            <div class="card-content">
+                <div class="content-inner">
+                    <div class="vs-grid">
+                        <div class="vs-card" style="border-top: 3px solid var(--wrong-color);">
+                            <h4><span class="wrong-icon">❌</span> Checklist Thinking</h4>
+                            <p>What should I do next?</p>
+                            <p>How many activities?</p>
+                            <p>What do colleges want?</p>
+                        </div>
+                        <div class="vs-card" style="border-top: 3px solid var(--correct-color);">
+                            <h4><span class="correct-icon">✅</span> Brand Thinking</h4>
+                            <p>Who am I becoming?</p>
+                            <p>What story is forming?</p>
+                            <p>What do I genuinely care about?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 5 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Activities Are Tools, Not the Goal</div>
+                <svg class="icon-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            <div class="card-content">
+                <div class="content-inner">
+                    <p class="quote">“MUN, Olympiad, internship, course, volunteering — none of these are powerful by default.”</p>
+                    <p>They become powerful only if:</p>
+                    <ul class="bullet-list">
+                        <li>They show depth</li>
+                        <li>They fit your direction</li>
+                        <li>They create learning or impact</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 6 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Examples: Weak vs Strong</div>
+                <svg class="icon-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            <div class="card-content">
+                <div class="content-inner">
+                    
+                    <div class="example-block">
+                        <h4>Coding:</h4>
+                        <div class="example-item"><span class="wrong-icon">❌</span> 5 coding certificates</div>
+                        <div class="example-item"><span class="correct-icon">✅</span> Build an app solving a real problem</div>
+                    </div>
+
+                    <div class="example-block">
+                        <h4>Economics:</h4>
+                        <div class="example-item"><span class="wrong-icon">❌</span> Read theory</div>
+                        <div class="example-item"><span class="correct-icon">✅</span> Conduct survey, publish findings</div>
+                    </div>
+
+                    <div class="example-block">
+                        <h4>Biology:</h4>
+                        <div class="example-item"><span class="wrong-icon">❌</span> Study chapters</div>
+                        <div class="example-item"><span class="correct-icon">✅</span> Do a research/blog/project</div>
+                    </div>
+
+                    <div class="example-block">
+                        <h4>Business:</h4>
+                        <div class="example-item"><span class="wrong-icon">❌</span> Watch Shark Tank</div>
+                        <div class="example-item"><span class="correct-icon">✅</span> Start a small initiative</div>
+                    </div>
+
+                    <p class="quote">“Same interest. Very different profile.”</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 7 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">What a Strong Profile Looks Like</div>
+                <svg class="icon-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            <div class="card-content">
+                <div class="content-inner">
+                    <div class="student-profile" style="border-left: 4px solid var(--wrong-color);">
+                        <h4>Weak student:</h4>
+                        <p>“I did MUN, coding, volunteering, internship.”</p>
+                    </div>
+
+                    <div class="student-profile" style="border-left: 4px solid var(--correct-color);">
+                        <h4>Strong student:</h4>
+                        <p>“Over the last year, I developed interest in X, built skills in Y, and created impact through Z.”</p>
+                    </div>
+
+                    <p class="quote">“That is not a resume. That is a narrative.”</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 8 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Start Today (Formula)</div>
+                <svg class="icon-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            <div class="card-content">
+                <div class="content-inner">
+                    <div class="formula-box">
+                        <span>Interest</span> 
+                        <span class="formula-arrow">→</span> 
+                        <span>Skill</span> 
+                        <span class="formula-arrow">→</span> 
+                        <span>Impact</span>
+                    </div>
+
+                    <ol class="num-list">
+                        <li>Identify what excites you</li>
+                        <li>Build skill in it</li>
+                        <li>Apply it somewhere real</li>
+                    </ol>
+
+                    <p style="font-weight: 500; margin-top: 1rem; color: var(--primary-color);">Do this for 9–12 months → powerful profile.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 9 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">SAT & Applications</div>
+                <svg class="icon-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            <div class="card-content">
+                <div class="content-inner">
+                    <p class="quote">“SAT shows universities you are academically ready.”</p>
+                    <p class="quote">“Profile shows them you are interesting, driven, and different.”</p>
+                    <p class="quote">“Essays are where you tell this story.”</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 10 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">What SAT Really Is</div>
+                <svg class="icon-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            <div class="card-content">
+                <div class="content-inner">
+                    <ul class="bullet-list">
+                        <li>A global academic benchmark</li>
+                        <li>Used to compare students worldwide</li>
+                        <li>Important for admissions + scholarships</li>
+                    </ul>
+
+                    <div class="vs-grid" style="margin-top: 1.5rem;">
+                        <div class="vs-card">
+                            <h4 style="color: var(--primary-color);">Strong Score:</h4>
+                            <p>SAT: 1400+ strong, 1500+ elite</p>
+                        </div>
+                        <div class="vs-card">
+                            <h4 style="color: var(--primary-color);">Prep Time:</h4>
+                            <p>4–6 months</p>
+                        </div>
+                    </div>
+
+                    <p class="quote">“SAT gets you noticed globally.”</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 11 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Common App Timeline</div>
+                <svg class="icon-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            <div class="card-content">
+                <div class="content-inner">
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-title">August 1 — Portal Opens</div>
+                            <ul class="bullet-list" style="margin-bottom: 0;">
+                                <li>Create account</li>
+                                <li>Start profile</li>
+                                <li>Choose essay prompt</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-title">August–September</div>
+                            <ul class="bullet-list" style="margin-bottom: 0;">
+                                <li>Write essays</li>
+                                <li>Build activities section</li>
+                            </ul>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-title">October</div>
+                            <ul class="bullet-list" style="margin-bottom: 0;">
+                                <li>Finalize application</li>
+                                <li>Prepare for early deadlines</li>
+                            </ul>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-title">November</div>
+                            <p>Submit Early Action / Early Decision</p>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-title">December</div>
+                            <p>Final polishing</p>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-title">January</div>
+                            <p>Regular deadlines</p>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-title">March–April</div>
+                            <p>Decisions arrive</p>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-title">May 1</div>
+                            <p>Final university selection</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 12 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Final Thought</div>
+                <svg class="icon-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            <div class="card-content">
+                <div class="content-inner">
+                    <p class="quote">“You don’t need money. You don’t need connections. You need direction — starting today.”</p>
+                    
+                    <p class="quote">“You can build a random profile…<br>or build a story that gets you into top universities.”</p>
+                    
+                    <p class="quote" style="border-left-color: var(--correct-color); color: var(--text-main);">
+                        <strong>“The difference starts with what you do after today.”</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const accordion = document.getElementById('accordion');
+        const cards = accordion.querySelectorAll('.card');
+        const expandAllBtn = document.getElementById('expandAll');
+        const collapseAllBtn = document.getElementById('collapseAll');
+        let isAllExpanded = false;
+
+        function setMaxHeight(card) {
+            const content = card.querySelector('.card-content');
+            if (card.classList.contains('active')) {
+                content.style.maxHeight = content.scrollHeight + 'px';
+            } else {
+                content.style.maxHeight = null;
+            }
+        }
+
+        function toggleCard(card, forceExpand = null) {
+            const isCurrentlyActive = card.classList.contains('active');
+            const shouldExpand = forceExpand !== null ? forceExpand : !isCurrentlyActive;
+
+            if (shouldExpand) {
+                card.classList.add('active');
+            } else {
+                card.classList.remove('active');
+            }
+            setMaxHeight(card);
+        }
+
+        // Initialize the first card as active
+        if(cards.length > 0) {
+            // small delay to let DOM paint so scrollHeight is accurate
+            setTimeout(() => {
+                setMaxHeight(cards[0]);
+            }, 50);
+        }
+
+        cards.forEach(card => {
+            const header = card.querySelector('.card-header');
+            
+            header.addEventListener('click', () => {
+                // If accordion mode (not manually expanded all), close others
+                if (!isAllExpanded && !card.classList.contains('active')) {
+                    cards.forEach(otherCard => {
+                        if (otherCard !== card && otherCard.classList.contains('active')) {
+                            toggleCard(otherCard, false);
+                        }
+                    });
+                }
+                
+                toggleCard(card);
+                
+                // Update state if things are mixed
+                const activeCount = document.querySelectorAll('.card.active').length;
+                if (activeCount === cards.length) {
+                    isAllExpanded = true;
+                } else {
+                    isAllExpanded = false;
+                }
+            });
+        });
+
+        expandAllBtn.addEventListener('click', () => {
+            isAllExpanded = true;
+            cards.forEach(card => toggleCard(card, true));
+        });
+
+        collapseAllBtn.addEventListener('click', () => {
+            isAllExpanded = false;
+            cards.forEach(card => toggleCard(card, false));
+        });
+
+        // Recalculate max-height on window resize for active cards
+        window.addEventListener('resize', () => {
+            cards.forEach(card => {
+                if (card.classList.contains('active')) {
+                    setMaxHeight(card);
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>
