@@ -3,762 +3,1041 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>What Students Think Profile Building Is vs What Universities Actually Value</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Global Admissions Masterclass | SAT, Profile & Strategy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #f4f6f9;
-            --primary-color: #1a73e8;
-            --wrong-color: #d93025;
-            --correct-color: #188038;
+            --primary: #0f172a;
+            --accent: #2563eb;
+            --accent-soft: #dbeafe;
+            --success: #059669;
+            --warning: #dc2626;
+            --bg: #f8fafc;
             --card-bg: #ffffff;
-            --text-main: #202124;
-            --text-muted: #5f6368;
-            --shadow-soft: 0 4px 6px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.08);
-            --shadow-hover: 0 10px 20px rgba(0, 0, 0, 0.08), 0 6px 6px rgba(0, 0, 0, 0.05);
-            --radius: 16px;
-            --transition-speed: 300ms;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--bg-color);
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
             color: var(--text-main);
             line-height: 1.6;
-            padding: 2rem 1.25rem;
-            -webkit-font-smoothing: antialiased;
+            display: flex;
+            min-height: 100vh;
         }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
+        /* Sidebar Navigation */
+        aside {
+            width: 300px;
+            background: var(--primary);
+            color: white;
+            padding: 2rem 1.5rem;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            border-right: 1px solid var(--border);
+            z-index: 100;
         }
 
-        header {
-            text-align: center;
+        .sidebar-logo {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
             margin-bottom: 2.5rem;
-            padding: 3rem 1.5rem;
-            background: linear-gradient(135deg, #1a73e8 0%, #1557b0 100%);
-            border-radius: var(--radius);
-            box-shadow: 0 8px 24px rgba(26, 115, 232, 0.25);
+            display: block;
+            color: white;
+            text-decoration: none;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 0.5rem;
+        }
+
+        .nav-group {
+            margin-bottom: 2rem;
+        }
+
+        .nav-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #94a3b8;
+            margin-bottom: 1rem;
+            display: block;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.1);
             color: white;
         }
 
-        h1 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            line-height: 1.3;
-            letter-spacing: -0.02em;
+        .nav-links a.active {
+            background: var(--accent);
+            color: white;
         }
 
-        .controls {
-            display: flex;
-            justify-content: flex-end;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
+        /* Main Content Area */
+        main {
+            margin-left: 300px;
+            flex: 1;
+            padding: 3rem;
+            max-width: 1100px;
         }
 
-        .btn {
-            background-color: var(--card-bg);
-            color: var(--text-main);
-            border: 1px solid #dadce0;
-            padding: 0.6rem 1.2rem;
-            border-radius: 8px;
-            font-size: 0.95rem;
+        header {
+            margin-bottom: 4rem;
+        }
+
+        .badge {
+            background: var(--accent-soft);
+            color: var(--accent);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
             font-weight: 600;
-            cursor: pointer;
-            transition: all var(--transition-speed) ease;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-        }
-
-        .btn:hover {
-            background-color: #f8faff;
-            border-color: var(--primary-color);
-            color: var(--primary-color);
-            transform: translateY(-1px);
-            box-shadow: 0 4px 8px rgba(26, 115, 232, 0.1);
-        }
-
-        .accordion {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-        }
-
-        .card {
-            background-color: var(--card-bg);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-soft);
-            overflow: hidden;
-            transition: all var(--transition-speed) ease;
-            border: 1px solid rgba(0,0,0,0.03);
-        }
-
-        .card:hover {
-            box-shadow: var(--shadow-hover);
-            transform: translateY(-2px);
-            border-color: rgba(26, 115, 232, 0.1);
-        }
-
-        .card.active {
-            border-left: 4px solid var(--primary-color);
-        }
-
-        .card-header {
-            padding: 1.25rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            background-color: transparent;
-            user-select: none;
-            transition: background-color var(--transition-speed) ease;
-        }
-
-        .card-header:hover {
-            background-color: #fbfdff;
-        }
-
-        .card-title {
-            font-size: 1.15rem;
-            font-weight: 600;
-            color: var(--text-main);
-            transition: color var(--transition-speed) ease;
-        }
-
-        .card.active .card-title {
-            color: var(--primary-color);
-        }
-
-        .icon-arrow {
-            width: 20px;
-            height: 20px;
-            transition: transform var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
-            fill: none;
-            stroke: var(--text-muted);
-            stroke-width: 2.5;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-
-        .card.active .icon-arrow {
-            transform: rotate(180deg);
-            stroke: var(--primary-color);
-        }
-
-        .card-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1), opacity var(--transition-speed) ease;
-            opacity: 0;
-            background-color: #fafbfc;
-        }
-
-        .card.active .card-content {
-            opacity: 1;
-        }
-
-        .content-inner {
-            padding: 0 1.5rem 1.5rem 1.5rem;
-            border-top: 1px solid #f1f3f4;
-            margin-top: 0.25rem;
-            padding-top: 1.25rem;
-            font-size: 1.05rem;
-            color: #3c4043;
-        }
-
-        p { margin-bottom: 1rem; }
-        p:last-child { margin-bottom: 0; }
-        
-        .quote {
-            font-style: italic;
-            color: var(--primary-color);
-            font-weight: 500;
-            border-left: 3px solid rgba(26, 115, 232, 0.3);
-            background: #f8faff;
-            padding: 1rem;
-            border-radius: 0 8px 8px 0;
+            display: inline-block;
             margin-bottom: 1rem;
         }
 
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .intro-text {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 700px;
+        }
+
+        /* Section Styling */
+        section {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        section:hover {
+            box-shadow: var(--shadow-lg);
+        }
+
+        h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        h2::before {
+            content: '';
+            width: 8px;
+            height: 32px;
+            background: var(--accent);
+            border-radius: 4px;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            margin: 2rem 0 1rem;
+            color: var(--primary);
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            color: #334155;
+        }
+
+        /* Tables */
+        .table-container {
+            overflow-x: auto;
+            margin: 2rem 0;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            background: white;
+        }
+
+        th {
+            background: #f8fafc;
+            padding: 1rem;
+            font-weight: 700;
+            color: var(--primary);
+            border-bottom: 2px solid var(--border);
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:nth-child(even) {
+            background: #fcfcfd;
+        }
+
+        /* Callouts & Key Lines */
+        .key-line {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 16px;
+            margin: 2rem 0;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .key-line::after {
+            content: '"';
+            position: absolute;
+            right: 20px;
+            bottom: -20px;
+            font-size: 8rem;
+            opacity: 0.1;
+            font-family: serif;
+        }
+
+        .pro-tip {
+            background: #ecfdf5;
+            border-left: 4px solid var(--success);
+            padding: 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0;
+        }
+
+        .pro-tip strong {
+            color: var(--success);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .warning {
+            background: #fef2f2;
+            border-left: 4px solid var(--warning);
+            padding: 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0;
+        }
+
+        .warning strong {
+            color: var(--warning);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Lists */
         ul {
             list-style: none;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         li {
             position: relative;
-            padding-left: 1.5rem;
-            margin-bottom: 0.6rem;
+            padding-left: 1.75rem;
+            margin-bottom: 0.75rem;
         }
 
-        .bullet-list li::before {
-            content: "•";
-            color: var(--primary-color);
-            font-weight: bold;
+        li::before {
+            content: '→';
             position: absolute;
             left: 0;
-            font-size: 1.2rem;
-            line-height: 1.5;
+            color: var(--accent);
+            font-weight: bold;
         }
 
-        .num-list {
-            list-style-type: decimal;
-            padding-left: 1.5rem;
-            margin-bottom: 1rem;
-        }
-        .num-list li {
-            padding-left: 0.5rem;
-            margin-bottom: 0.6rem;
-        }
-
-        .wrong-icon { color: var(--wrong-color); font-weight: bold; margin-right: 0.5rem; }
-        .correct-icon { color: var(--correct-color); font-weight: bold; margin-right: 0.5rem; }
-        
-        .wrong-text { color: var(--wrong-color); font-weight: 600; }
-        .correct-text { color: var(--correct-color); font-weight: 600; }
-
+        /* Comparison Cards */
         .vs-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 1.5rem;
-            margin-top: 1rem;
+            margin: 2rem 0;
         }
 
         .vs-card {
-            background: white;
-            padding: 1.25rem;
-            border-radius: 12px;
-            border: 1px solid #e8eaed;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-        }
-
-        .vs-card h4 {
-            margin-bottom: 0.75rem;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            border-bottom: 1px solid #e8eaed;
-            padding-bottom: 0.5rem;
-        }
-
-        .formula-box {
-            background: linear-gradient(135deg, #f8faff 0%, #e8f0fe 100%);
-            border: 1px solid rgba(26, 115, 232, 0.2);
             padding: 1.5rem;
-            border-radius: 12px;
-            text-align: center;
-            font-weight: 600;
-            font-size: 1.2rem;
-            color: var(--primary-color);
-            margin: 1.5rem 0;
-            box-shadow: 0 4px 6px rgba(26,115,232,0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-        }
-        
-        .formula-arrow {
-            color: var(--text-muted);
+            border-radius: 16px;
+            border: 1px solid var(--border);
         }
 
-        .timeline {
-            border-left: 2px solid #e8eaed;
-            margin-left: 0.5rem;
-            padding-left: 1.5rem;
+        .vs-card.weak { border-top: 4px solid var(--warning); }
+        .vs-card.strong { border-top: 4px solid var(--success); background: #f0fdf4; }
+
+        /* Timeline Items */
+        .timeline-detailed {
+            margin-top: 2rem;
+            padding-left: 1rem;
+            border-left: 2px solid var(--accent-soft);
         }
 
-        .timeline-item {
-            margin-bottom: 1.5rem;
+        .time-node {
+            margin-bottom: 2rem;
             position: relative;
         }
 
-        .timeline-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .timeline-item::before {
-            content: "";
-            position: absolute;
-            left: -1.85rem;
-            top: 0.3rem;
+        .time-node::before {
+            content: '';
             width: 12px;
             height: 12px;
+            background: var(--accent);
             border-radius: 50%;
-            background: var(--primary-color);
+            position: absolute;
+            left: -1.45rem;
+            top: 0.4rem;
             border: 2px solid white;
-            box-shadow: 0 0 0 2px rgba(26,115,232,0.2);
         }
 
-        .timeline-title {
-            font-weight: 600;
-            color: var(--text-main);
+        .month {
+            font-weight: 800;
+            color: var(--accent);
+            text-transform: uppercase;
+            font-size: 0.85rem;
             margin-bottom: 0.25rem;
         }
 
-        .example-block {
-            margin-bottom: 1.5rem;
-            background: white;
-            padding: 1.25rem;
-            border-radius: 12px;
-            border: 1px solid #e8eaed;
-            margin-bottom: 1rem;
-        }
-        .example-block h4 {
-            color: var(--primary-color);
-            margin-bottom: 0.75rem;
-            font-size: 1.1rem;
-        }
-        .example-item {
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: flex-start;
+        @media (max-width: 1024px) {
+            aside { width: 240px; }
+            main { margin-left: 240px; }
         }
 
-        .student-profile {
-            background: white;
-            padding: 1.25rem;
-            border-radius: 12px;
-            border: 1px solid #e8eaed;
-            margin-bottom: 1rem;
-        }
-        .student-profile h4 {
-            margin-bottom: 0.5rem;
-            color: var(--text-main);
-        }
-
-        @media (max-width: 600px) {
-            h1 { font-size: 1.8rem; }
-            header { padding: 2.5rem 1rem; }
-            .vs-grid { grid-template-columns: 1fr; gap: 1rem; }
-            .card-header { padding: 1.1rem 1.25rem; }
-            .content-inner { padding: 0 1.25rem 1.25rem 1.25rem; }
-            .formula-box { flex-direction: column; gap: 0.5rem; }
-            .formula-arrow { transform: rotate(90deg); }
+        @media (max-width: 768px) {
+            aside { display: none; }
+            main { margin-left: 0; padding: 1.5rem; }
+            h1 { font-size: 2.2rem; }
+            section { padding: 1.5rem; }
+            .vs-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
+<aside>
+    <a href="#" class="sidebar-logo">Global Mentor</a>
+    
+    <nav class="nav-group">
+        <span class="nav-label">Phase 1: Foundations</span>
+        <ul class="nav-links">
+            <li><a href="#reality" class="active">Global Reality</a></li>
+            <li><a href="#testing">Testing (SAT/ACT)</a></li>
+            <li><a href="#course-tests">Advanced Tests</a></li>
+        </ul>
+    </nav>
+
+    <nav class="nav-group">
+        <span class="nav-label">Phase 2: The Narrative</span>
+        <ul class="nav-links">
+            <li><a href="#profile">Profile Building</a></li>
+            <li><a href="#trap">The Trap</a></li>
+            <li><a href="#mindset">Mindset Shift</a></li>
+            <li><a href="#essays">Essays & LORs</a></li>
+        </ul>
+    </nav>
+
+    <nav class="nav-group">
+        <span class="nav-label">Phase 3: The Roadmap</span>
+        <ul class="nav-links">
+            <li><a href="#timeline">Timeline Comparison</a></li>
+            <li><a href="#readiness">Student Readiness</a></li>
+            <li><a href="#canada">Canada Deep-Dive</a></li>
+            <li><a href="#usa">USA Common App</a></li>
+            <li><a href="#strategy">Winning Strategy</a></li>
+        </ul>
+    </nav>
+
+    <nav class="nav-group">
+        <span class="nav-label">Resources</span>
+        <ul class="nav-links">
+            <li><a href="#speaker-script">Mentor Script</a></li>
+        </ul>
+    </nav>
+</aside>
+
+<main>
     <header>
-        <h1>What Students Think Profile Building Is<br>vs<br>What Universities Actually Value</h1>
+        <div class="badge">Session: Global Undergraduate Strategy</div>
+        <h1>The Strategy of Storytelling & Timing</h1>
+        <p class="intro-text">Moving beyond marks to build a profile that top universities can't ignore. This is how you win the global admissions game.</p>
     </header>
 
-    <div class="controls">
-        <button id="expandAll" class="btn">Expand All</button>
-        <button id="collapseAll" class="btn">Collapse All</button>
-    </div>
+    <!-- SECTION 1: REALITY -->
+    <section id="reality">
+        <h2>1. Global Application Reality</h2>
+        <p>Every year, thousands of students with perfect grades are rejected from top universities. Why? Because global admissions are no longer just an academic competition—they are a <strong>strategic narrative competition.</strong></p>
+        <p>UK, USA, Canada, and Singapore all have different systems, but they share one critical rule: <strong>Success favors the early.</strong></p>
+        <div class="key-line">
+            "Admissions success = Strategy + Story + Timing. Your marks are the ticket, but your story is the seat."
+        </div>
+    </section>
 
-    <div class="accordion" id="accordion">
+    <!-- SECTION 2: TESTING -->
+    <section id="testing">
+        <h2>2. What SAT / ACT Really Are</h2>
+        <p>The SAT and ACT are standardized tests that provide a common benchmark for universities to compare students from different curricula (CBSE, IB, ISC, etc.).</p>
         
-        <!-- SECTION 1 -->
-        <div class="card active">
-            <div class="card-header">
-                <div class="card-title">Opening</div>
-                <svg class="icon-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>SAT (Digital)</th>
+                        <th>ACT</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Structure</strong></td>
+                        <td>Reading & Writing, Math</td>
+                        <td>English, Math, Reading, Science</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Time</strong></td>
+                        <td>2 Hours 14 Minutes</td>
+                        <td>2 Hours 55 Minutes</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Format</strong></td>
+                        <td>Adaptive (Section level)</td>
+                        <td>Linear (Traditional)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Strong Score</strong></td>
+                        <td>1450+ Competitive, 1530+ Elite</td>
+                        <td>32+ Competitive, 34+ Elite</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>Where SAT Helps Worldwide</h3>
+        <ul>
+            <li><strong>USA:</strong> Critical for top tiers; unlocks major scholarships.</li>
+            <li><strong>Singapore:</strong> Highly valued at NUS/NTU for Indian curriculum students.</li>
+            <li><strong>India:</strong> Now accepted by Ashoka, Shiv Nadar, Flame, and others.</li>
+            <li><strong>Europe/Canada:</strong> Excellent for strengthening a profile with lower board marks.</li>
+        </ul>
+
+        <div class="key-line">
+            "The SAT doesn't just show you're smart; it shows you're globally ready."
+        </div>
+    </section>
+
+    <!-- SECTION 3: ADVANCED TESTS -->
+    <section id="course-tests">
+        <h2>3. Course-Specific Awareness</h2>
+        <p>Depending on your major and target country, you might need specialized testing. These are aspirational but require planning.</p>
+        
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Test Name</th>
+                        <th>Targeted Programs</th>
+                        <th>Key Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>APs (Advanced Placement)</strong></td>
+                        <td>US/Global Top Tiers</td>
+                        <td>Show university-level rigor; earn credits.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>UCAT</strong></td>
+                        <td>UK/Australia Medicine</td>
+                        <td>Cognitive ability for medical school.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>TMUA / ESAT</strong></td>
+                        <td>UK STEM (Cambridge/Imperial)</td>
+                        <td>Elite mathematical and scientific thinking.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>TMUA</strong></td>
+                        <td>Economics/Computer Science</td>
+                        <td>Pure logical reasoning.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- SECTION 4: PROFILE BUILDING -->
+    <section id="profile">
+        <h2>4. The Game Changer: Profile Building</h2>
+        <p>A "Profile" is the evidence of your interests, skills, and impact. It is what makes you a 3D person in a pile of 2D applications.</p>
+        
+        <div class="vs-grid">
+            <div class="vs-card">
+                <h4 style="color: var(--warning)">Marks</h4>
+                <p>Tell the university if you <strong>can</strong> handle the workload.</p>
             </div>
-            <div class="card-content">
-                <div class="content-inner">
-                    <p class="quote">“The best time to start profile building is today. Not after exams. Not after boards. Today.”</p>
-                    <p class="quote">“But first, let’s correct what most students misunderstand about profile building.”</p>
-                </div>
+            <div class="vs-card" style="background: #eff6ff">
+                <h4 style="color: var(--accent)">Profile</h4>
+                <p>Tells the university <strong>why</strong> they should care about you.</p>
             </div>
         </div>
 
-        <!-- SECTION 2 -->
-        <div class="card">
-            <div class="card-header">
-                <div class="card-title">What Students Think Profile Building Is</div>
-                <svg class="icon-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        <h3>Profile Evolution (Grade 8–12)</h3>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Stage</th>
+                        <th>Weak Approach</th>
+                        <th>Strong Approach</th>
+                        <th>Outcome</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Grades 8-10</strong></td>
+                        <td>Random clubs for 1 day</td>
+                        <td>Exploration of 2-3 interests</td>
+                        <td>Foundation & Spark</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Grade 11</strong></td>
+                        <td>Collecting MUN certificates</td>
+                        <td>Deep Skill building + Research</td>
+                        <td>Authority in Subject</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Grade 12</strong></td>
+                        <td>Panic volunteering in Aug</td>
+                        <td>Scaling impact of existing work</td>
+                        <td>A Winning Narrative</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="pro-tip">
+            <strong>The Activities Rule:</strong> Activities are tools, not the goal. An internship isn't about the company name; it's about the project you finished. An MUN isn't about the certificate; it's about the policy you drafted.
+        </div>
+    </section>
+
+    <!-- SECTION: THE TRAP -->
+    <section id="trap">
+        <h2>The Trap: Looks Impressive vs Actually Impressive</h2>
+        <p>Many students spend 100+ hours on activities that admissions officers ignore. Here is how to tell the difference.</p>
+        
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Activity Type</th>
+                        <th>Looks Impressive (The Trap)</th>
+                        <th>Actually Impressive (The Value)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Internship</strong></td>
+                        <td>Shadowing a CEO for 1 week; getting a certificate.</td>
+                        <td>Completing a specific task or research project for the company.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Volunteering</strong></td>
+                        <td>100 random hours of "teaching kids" once a month.</td>
+                        <td>Solving a specific, measurable problem in your local area consistently.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>MUN / Debate</strong></td>
+                        <td>Attending 15 MUNs as a participant.</td>
+                        <td>Organizing a conference; Chairing; Writing policy whitepapers.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Coding</strong></td>
+                        <td>Getting 5 certificates from Coursera/Udemy.</td>
+                        <td>Building a real app that has active users or solves a problem.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Research</strong></td>
+                        <td>Reading 10 books on a topic.</td>
+                        <td>Publishing a paper; Presenting at a conference; Primary data collection.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- SECTION 5: MINDSET -->
+    <section id="mindset">
+        <h2>5. Mindset Shift: Checklist vs Brand</h2>
+        <p>The most dangerous trap is doing things just because "they look good." Admissions officers see right through it.</p>
+        
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Checklist Thinking</th>
+                        <th>Brand Thinking</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>"What do universities want?"</td>
+                        <td>"Who am I and what do I care about?"</td>
+                    </tr>
+                    <tr>
+                        <td>"I have 10 certificates."</td>
+                        <td>"I have 1 story of impact."</td>
+                    </tr>
+                    <tr>
+                        <td>"I am an all-rounder."</td>
+                        <td>"I am a specialist who contributes."</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Result:</strong> Generic Profile</td>
+                        <td><strong>Result:</strong> Memorable Brand</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="key-line">
+            "Don't build a resume. Build a narrative."
+        </div>
+    </section>
+
+    <!-- SECTION 6: ESSAYS & LORS -->
+    <section id="essays">
+        <h2>6. Essays, SOPs & LORs</h2>
+        <p>This is where the application becomes human. The Essay is not an English test; it is a <strong>clarity of thinking</strong> test.</p>
+        
+        <h3>What makes a powerful essay?</h3>
+        <ul>
+            <li><strong>Authenticity:</strong> Writing like a 17-year-old, not an AI or a lawyer.</li>
+            <li><strong>Reflection:</strong> Not just what you did, but what it meant to you.</li>
+            <li><strong>Clarity:</strong> One clear message that ties everything together.</li>
+        </ul>
+
+        <h3>LORs (Letters of Recommendation)</h3>
+        <div class="vs-grid">
+            <div class="vs-card weak">
+                <h4>Weak LOR</h4>
+                <p>"He is a hardworking student who participated in class and got good marks. I highly recommend him."</p>
             </div>
-            <div class="card-content">
-                <div class="content-inner">
-                    <ul class="bullet-list">
-                        <li>Collecting certificates</li>
-                        <li>Doing MUN, coding, volunteering because others do it</li>
-                        <li>Joining many activities for resume</li>
-                        <li>Following what toppers are doing</li>
-                        <li>Adding lines to a CV</li>
-                    </ul>
-                    <p class="quote">“This looks impressive to relatives. Not to universities.”</p>
-                </div>
+            <div class="vs-card strong">
+                <h4>Strong LOR</h4>
+                <p>"When our lab equipment failed, she stayed late to design a workaround using 3D printing, saving the project."</p>
             </div>
         </div>
 
-        <!-- SECTION 3 -->
-        <div class="card">
-            <div class="card-header">
-                <div class="card-title">What Universities Actually Value</div>
-                <svg class="icon-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        <div class="pro-tip">
+            <strong>The Golden Rule of Alignment:</strong>
+            <div class="table-container" style="margin-top: 1rem;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Phase</th>
+                            <th>Role in Application</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Profile</strong></td>
+                            <td>The evidence of your skills and impact.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Essay</strong></td>
+                            <td>The narrative that explains the "Why" behind the profile.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>LOR</strong></td>
+                            <td>The external validation from experts (teachers).</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <div class="card-content">
-                <div class="content-inner">
-                    <ul class="bullet-list">
-                        <li>Clear direction of interest</li>
-                        <li>Depth over number of activities</li>
-                        <li>Evidence of thinking, creating, solving</li>
-                        <li>Consistency over time</li>
-                        <li>Real impact, not participation</li>
-                        <li>A story that makes sense</li>
-                    </ul>
-                    <p class="quote">“Universities don’t count activities. They read patterns.”</p>
-                </div>
-            </div>
+            <p style="margin-top: 1rem; color: var(--success); font-weight: 600;">If these three align, your application is unstoppable.</p>
+        </div>
+    </section>
+
+    <!-- SECTION 7: TIMELINES -->
+    <section id="timeline">
+        <h2>7. Master Application Roadmap</h2>
+        <p>Success in global admissions is 90% timing. Here is how the world's top systems compare through the academic year.</p>
+        
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Month</th>
+                        <th>USA</th>
+                        <th>UK (UCAS)</th>
+                        <th>Canada</th>
+                        <th>Australia / Singapore</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Aug – Sep</strong></td>
+                        <td>Portals Open; Drafting Essays</td>
+                        <td>UCAS Opens; Researching Colleges</td>
+                        <td>Program Research & Requirements</td>
+                        <td>Test Prep (SAT/IELTS)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>October</strong></td>
+                        <td>Finalizing EA/ED School List</td>
+                        <td><strong>Oxbridge / Medicine Deadline</strong></td>
+                        <td>OUAC Portal Opens</td>
+                        <td>Profile Building Finalization</td>
+                    </tr>
+                    <tr>
+                        <td><strong>November</strong></td>
+                        <td><strong>Early Action Deadlines</strong></td>
+                        <td>Personal Statement Polishing</td>
+                        <td>Early Consideration Window</td>
+                        <td>Shortlisting Programs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dec – Jan</strong></td>
+                        <td>Regular Decision Deadlines</td>
+                        <td><strong>Equal Consideration Deadline</strong></td>
+                        <td><strong>Major Application Deadlines</strong></td>
+                        <td>Applications Open for many</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Feb – Mar</strong></td>
+                        <td>Financial Aid Forms</td>
+                        <td>Interview Prep (if req.)</td>
+                        <td>Submitting Mid-term Grades</td>
+                        <td>Decision Letters Arrive</td>
+                    </tr>
+                    <tr>
+                        <td><strong>May 1st</strong></td>
+                        <td><strong>National Decision Day</strong></td>
+                        <td>Finalize Firm/Insurance choice</td>
+                        <td>Final Deposit Deadlines</td>
+                        <td>Visa Processing Begins</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
-        <!-- SECTION 4 -->
-        <div class="card">
-            <div class="card-header">
-                <div class="card-title">Checklist vs Brand Thinking</div>
-                <svg class="icon-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        <h3 style="margin-top: 3rem;">Comparison: What They Value Most</h3>
+                    <tr>
+                        <td><strong>UK</strong></td>
+                        <td>UCAS</td>
+                        <td>Oct (Oxbridge) / Jan</td>
+                        <td>Academic Specialization / SOP</td>
+                    </tr>
+                    <tr>
+                        <td><strong>USA</strong></td>
+                        <td>Common App</td>
+                        <td>Nov (Early) / Jan (Reg)</td>
+                        <td>Holistic (Story + Grades)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Canada</strong></td>
+                        <td>OUAC / Direct</td>
+                        <td>January</td>
+                        <td>Consistency / Grades</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Singapore</strong></td>
+                        <td>University Portal</td>
+                        <td>Jan – March</td>
+                        <td>High Rank / Competitive Scores</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Australia</strong></td>
+                        <td>Direct / Agent</td>
+                        <td>Rolling (Feb/July)</td>
+                        <td>Final Boards / ATAR</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- SECTION: READINESS -->
+    <section id="readiness">
+        <h2>Ideal Student Readiness Checklist</h2>
+        <p>Before you hit 'Submit' in Class 12, ensure you have these four pillars ready.</p>
+        
+        <div class="vs-grid">
+            <div class="vs-card strong">
+                <h4>1. Academic & Testing</h4>
+                <ul>
+                    <li>SAT/ACT Score at or above target university average.</li>
+                    <li>Predicted Class 12 marks consistent with top performance.</li>
+                    <li>AP scores (if applicable) reported.</li>
+                </ul>
             </div>
-            <div class="card-content">
-                <div class="content-inner">
-                    <div class="vs-grid">
-                        <div class="vs-card" style="border-top: 3px solid var(--wrong-color);">
-                            <h4><span class="wrong-icon">❌</span> Checklist Thinking</h4>
-                            <p>What should I do next?</p>
-                            <p>How many activities?</p>
-                            <p>What do colleges want?</p>
-                        </div>
-                        <div class="vs-card" style="border-top: 3px solid var(--correct-color);">
-                            <h4><span class="correct-icon">✅</span> Brand Thinking</h4>
-                            <p>Who am I becoming?</p>
-                            <p>What story is forming?</p>
-                            <p>What do I genuinely care about?</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="vs-card strong">
+                <h4>2. Profile Strength</h4>
+                <ul>
+                    <li>1-2 Capstone projects with measurable impact.</li>
+                    <li>Consistency in 2-3 core extracurriculars (3+ years).</li>
+                    <li>Leadership roles that show real responsibility.</li>
+                </ul>
+            </div>
+            <div class="vs-card strong">
+                <h4>3. The Narrative</h4>
+                <ul>
+                    <li>Main Personal Statement drafted & reviewed 3+ times.</li>
+                    <li>Letters of Recommendation (LORs) secured from 2-3 teachers.</li>
+                    <li>University shortlist (Reach, Match, Safety) finalized.</li>
+                </ul>
+            </div>
+            <div class="vs-card strong">
+                <h4>4. Documentation</h4>
+                <ul>
+                    <li>Official transcripts from Grade 9, 10, and 11.</li>
+                    <li>Financial documents/Scholarship forms ready.</li>
+                    <li>Passport and IDs up to date.</li>
+                </ul>
             </div>
         </div>
+    </section>
 
-        <!-- SECTION 5 -->
-        <div class="card">
-            <div class="card-header">
-                <div class="card-title">Activities Are Tools, Not the Goal</div>
-                <svg class="icon-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+    <!-- SECTION 8: CANADA DEEP-DIVE -->
+    <section id="canada">
+        <h2>8. Canada Deep-Dive (OUAC)</h2>
+        <div class="timeline-detailed">
+            <div class="time-node">
+                <div class="month">August – October</div>
+                <p>Research universities and specific program requirements. Some programs need supplements.</p>
             </div>
-            <div class="card-content">
-                <div class="content-inner">
-                    <p class="quote">“MUN, Olympiad, internship, course, volunteering — none of these are powerful by default.”</p>
-                    <p>They become powerful only if:</p>
-                    <ul class="bullet-list">
-                        <li>They show depth</li>
-                        <li>They fit your direction</li>
-                        <li>They create learning or impact</li>
-                    </ul>
-                </div>
+            <div class="time-node">
+                <div class="month">November – December</div>
+                <p>OUAC (Ontario Universities) applications open. Submit early for early consideration.</p>
             </div>
-        </div>
-
-        <!-- SECTION 6 -->
-        <div class="card">
-            <div class="card-header">
-                <div class="card-title">Examples: Weak vs Strong</div>
-                <svg class="icon-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            <div class="time-node">
+                <div class="month">January</div>
+                <p>The "Hard Deadline" for most top programs (UofT, UBC, McGill).</p>
             </div>
-            <div class="card-content">
-                <div class="content-inner">
-                    
-                    <div class="example-block">
-                        <h4>Coding:</h4>
-                        <div class="example-item"><span class="wrong-icon">❌</span> 5 coding certificates</div>
-                        <div class="example-item"><span class="correct-icon">✅</span> Build an app solving a real problem</div>
-                    </div>
-
-                    <div class="example-block">
-                        <h4>Economics:</h4>
-                        <div class="example-item"><span class="wrong-icon">❌</span> Read theory</div>
-                        <div class="example-item"><span class="correct-icon">✅</span> Conduct survey, publish findings</div>
-                    </div>
-
-                    <div class="example-block">
-                        <h4>Biology:</h4>
-                        <div class="example-item"><span class="wrong-icon">❌</span> Study chapters</div>
-                        <div class="example-item"><span class="correct-icon">✅</span> Do a research/blog/project</div>
-                    </div>
-
-                    <div class="example-block">
-                        <h4>Business:</h4>
-                        <div class="example-item"><span class="wrong-icon">❌</span> Watch Shark Tank</div>
-                        <div class="example-item"><span class="correct-icon">✅</span> Start a small initiative</div>
-                    </div>
-
-                    <p class="quote">“Same interest. Very different profile.”</p>
-                </div>
+            <div class="time-node">
+                <div class="month">Feb – April</div>
+                <p>Document submission (predicted grades, mid-terms).</p>
             </div>
         </div>
+        <div class="warning">
+            <strong>Warning:</strong> Canadian universities are strictly grade-sensitive. A dip in Class 12 mid-term marks can lead to a rejection even after a conditional offer.
+        </div>
+    </section>
 
-        <!-- SECTION 7 -->
-        <div class="card">
-            <div class="card-header">
-                <div class="card-title">What a Strong Profile Looks Like</div>
-                <svg class="icon-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+    <!-- SECTION 9: USA TIMELINE -->
+    <section id="usa">
+        <h2>9. USA Common App Timeline</h2>
+        <div class="timeline-detailed">
+            <div class="time-node">
+                <div class="month">August 1st</div>
+                <p>Common App Opens. Start filling the basic details immediately.</p>
             </div>
-            <div class="card-content">
-                <div class="content-inner">
-                    <div class="student-profile" style="border-left: 4px solid var(--wrong-color);">
-                        <h4>Weak student:</h4>
-                        <p>“I did MUN, coding, volunteering, internship.”</p>
-                    </div>
-
-                    <div class="student-profile" style="border-left: 4px solid var(--correct-color);">
-                        <h4>Strong student:</h4>
-                        <p>“Over the last year, I developed interest in X, built skills in Y, and created impact through Z.”</p>
-                    </div>
-
-                    <p class="quote">“That is not a resume. That is a narrative.”</p>
-                </div>
+            <div class="time-node">
+                <div class="month">September – October</div>
+                <p>Finalize the Main Personal Statement. Request LORs from teachers.</p>
+            </div>
+            <div class="time-node">
+                <div class="month">November 1st</div>
+                <p><strong>Early Action / Early Decision Deadlines.</strong> 50% of your chances are here.</p>
+            </div>
+            <div class="time-node">
+                <div class="month">Jan 1st</div>
+                <p>Regular Decision Deadline. Final submission window.</p>
             </div>
         </div>
+    </section>
 
-        <!-- SECTION 8 -->
-        <div class="card">
-            <div class="card-header">
-                <div class="card-title">Start Today (Formula)</div>
-                <svg class="icon-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </div>
-            <div class="card-content">
-                <div class="content-inner">
-                    <div class="formula-box">
-                        <span>Interest</span> 
-                        <span class="formula-arrow">→</span> 
-                        <span>Skill</span> 
-                        <span class="formula-arrow">→</span> 
-                        <span>Impact</span>
-                    </div>
+    <!-- SECTION 10: STRATEGY -->
+    <section id="strategy">
+        <h2>10. What Winning Applications Do</h2>
+        <ul>
+            <li><strong>Early Reflection:</strong> They start thinking about their story in Grade 11, not Grade 12.</li>
+            <li><strong>Strategic Recommenders:</strong> They choose teachers who know their character, not just their grades.</li>
+            <li><strong>Deep Research:</strong> They know why they want "that" specific university.</li>
+            <li><strong>No Copy-Paste:</strong> They never use the same essay for two different universities.</li>
+        </ul>
 
-                    <ol class="num-list">
-                        <li>Identify what excites you</li>
-                        <li>Build skill in it</li>
-                        <li>Apply it somewhere real</li>
-                    </ol>
-
-                    <p style="font-weight: 500; margin-top: 1rem; color: var(--primary-color);">Do this for 9–12 months → powerful profile.</p>
-                </div>
-            </div>
+        <div class="key-line" style="background: linear-gradient(135deg, #059669 0%, #10b981 100%);">
+            "A moderate SAT + a strong story beats a high SAT + a weak story every single time."
         </div>
 
-        <!-- SECTION 9 -->
-        <div class="card">
-            <div class="card-header">
-                <div class="card-title">SAT & Applications</div>
-                <svg class="icon-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </div>
-            <div class="card-content">
-                <div class="content-inner">
-                    <p class="quote">“SAT shows universities you are academically ready.”</p>
-                    <p class="quote">“Profile shows them you are interesting, driven, and different.”</p>
-                    <p class="quote">“Essays are where you tell this story.”</p>
+        <h3>Common Mistakes to Avoid</h3>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Mistake</th>
+                        <th>Why it Fails</th>
+                        <th>The Fix</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Resume Essays</strong></td>
+                        <td>List of achievements without reflection.</td>
+                        <td>Focus on *why* and *how*, not *what*.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fancy Vocabulary</strong></td>
+                        <td>Sounds unnatural and masks your voice.</td>
+                        <td>Write like a smart 17-year-old, not a thesaurus.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Generic LORs</strong></td>
+                        <td>Doesn't add anything new to the profile.</td>
+                        <td>Give teachers "Brag Sheets" with specific examples.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Late Applications</strong></td>
+                        <td>Lowers admission & scholarship chances.</td>
+                        <td>Aim for Early Action (Nov 1st) for best results.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- FINAL TRUTH -->
+    <section>
+        <h2>Final Truth</h2>
+        <p>Global admissions is not a reward for your past; it is an investment in your future. They aren't looking for the "best" student—they are looking for the right fit for their campus culture.</p>
+        <p>Go beyond the checklist. Be authentic. Start early.</p>
+        <div class="key-line">
+            "Your application is a conversation. Make it one worth having."
+        </div>
+    </section>
+
+    <!-- SPEAKER SCRIPT SECTION -->
+    <section id="speaker-script" style="background: #fffafa; border: 2px dashed #fecaca;">
+        <h2 style="color: #b91c1c;">13. Full Presentation Script (Speaker View)</h2>
+        <div class="pro-tip" style="background: #fff1f2; border-color: #fca5a5;">
+            <strong>Pro Tip:</strong> This is a 12–15 minute script. Use the visual cues (in red) to pace your delivery and engage the audience.
+        </div>
+        
+        <div style="line-height: 1.8; font-size: 1.1rem;">
+            <h3 style="color: #b91c1c;">1. The Opening (The Hook)</h3>
+            <span class="cue" style="color: #dc2626; font-style: italic; background: #fee2e2; padding: 2px 6px; border-radius: 4px; font-size: 0.9rem;">(Walk to the center of the room. Pause. Look directly at the students.)</span>
+            <p><strong>Speaker:</strong> "Raise your hand if you’ve ever felt stressed because you think your resume isn’t long enough for college admissions."</p>
+            <span class="cue" style="color: #dc2626; font-style: italic; background: #fee2e2; padding: 2px 6px; border-radius: 4px; font-size: 0.9rem;">(Wait for hands to go up)</span>
+            <p><strong>Speaker:</strong> "Keep your hands up if you’ve ever signed up for a club, a competition, or a MUN *just* because you thought it would 'look good on your college application.'"</p>
+            <span class="cue" style="color: #dc2626; font-style: italic; background: #fee2e2; padding: 2px 6px; border-radius: 4px; font-size: 0.9rem;">(Look around)</span>
+            <p><strong>Speaker:</strong> "Put your hands down. Today, I am going to save you hundreds of hours of wasted time.</p>
+            <p>Most of what you’ve been told about building a profile for top universities is wrong. Today, we are going to talk about <span class="bold-point">What You Think Profile Building Is vs What Universities Actually Value</span>.</p>
+            <p>By the end of these 15 minutes, you will stop chasing certificates and start building a profile that admissions officers actually remember."</p>
+
+            <h3 style="color: #b91c1c; border-top: 1px solid #fecaca; padding-top: 1.5rem; margin-top: 2rem;">2. Common Misconceptions (The Reality Check)</h3>
+            <p><strong>Speaker:</strong> "Let’s start with the myths. When I ask students what a strong profile looks like, they usually describe a superhero. They think they need 5 Leadership positions, 100+ hours of community service, a national-level sports certificate, Grade 8 piano... and maybe a cure for a rare disease."</p>
+            <p><strong>This is what we call 'Checklist Thinking.'</strong> You think admissions officers have a checklist, and you’re trying to tick every box. You want to be the 'all-rounder.'</p>
+            <p>But here is the brutal truth: <span class="bold-point">Top universities do not want all-rounders.</span> They want a well-rounded <em>class</em> made up of specialists. If you try to be good at everything, you end up standing out at nothing."</p>
+
+            <h3 style="color: #b91c1c; border-top: 1px solid #fecaca; padding-top: 1.5rem; margin-top: 2rem;">3. Checklist Thinking vs. Brand Thinking</h3>
+            <p><strong>Speaker:</strong> "Instead of 'Checklist Thinking,' you need <span class="bold-point">'Brand Thinking.'</span> Think of your favorite brands. Apple stands for innovation. Nike stands for excellence. What do <em>you</em> stand for?</p>
+            <p>If an admissions officer has 2 minutes to read your file, what is the <strong>one sentence</strong> they write on a sticky note to describe you? Brand thinking is about focusing on one or two core passions and pushing them to their limit."</p>
+
+            <h3 style="color: #b91c1c; border-top: 1px solid #fecaca; padding-top: 1.5rem; margin-top: 2rem;">4. What Universities Actually Value</h3>
+            <p><strong>Speaker:</strong> "So, if they don’t want 10 random certificates, what <em>do</em> they want? They look for: <strong>Depth over Width</strong> (2 things for 4 years > 8 things for 1 year), <strong>Consistency</strong>, <strong>Impact</strong>, and <strong>Narrative</strong>. <span class="bold-point">Activities are not the goal.</span> They are just tools to show who you are."</p>
+
+            <h3 style="color: #b91c1c; border-top: 1px solid #fecaca; padding-top: 1.5rem; margin-top: 2rem;">5. Real-Life Examples: Weak vs. Strong</h3>
+            <div class="vs-grid">
+                <div class="vs-card" style="border-top: 3px solid #f87171;">
+                    <h4>Student A (Checklist)</h4>
+                    <p>Has a Python certificate, Vice-Captain, 2-week beach clean-up. <br><span class="cue" style="color: #dc2626; font-style: italic; background: #fee2e2; padding: 2px 6px; border-radius: 4px; font-size: 0.9rem;">Officer: 'Smart, but generic.'</span></p>
+                </div>
+                <div class="vs-card" style="border-top: 3px solid #4ade80; background: #f0fdf4;">
+                    <h4>Student B (Brand)</h4>
+                    <p>Learned Python, built a food waste app for the school, 500 users, 20% reduction. <br><span class="cue" style="color: #dc2626; font-style: italic; background: #fee2e2; padding: 2px 6px; border-radius: 4px; font-size: 0.9rem;">Officer: 'This kid solves problems. We need them.'</span></p>
                 </div>
             </div>
+
+            <h3 style="color: #b91c1c; border-top: 1px solid #fecaca; padding-top: 1.5rem; margin-top: 2rem;">6. The Pyramid & Framework</h3>
+            <p><strong>Speaker:</strong> "A strong profile is a pyramid: Academics (Base), 2-3 Core ECs (Middle), and 1 Capstone Project (Peak). Use the framework: <span class="bold-point">Interest → Skill → Impact.</span>"</p>
+
+            <h3 style="color: #b91c1c; border-top: 1px solid #fecaca; padding-top: 1.5rem; margin-top: 2rem;">7. Tying it Together: SATs & Essays</h3>
+            <p><strong>Speaker:</strong> "SATs prove you are smart enough for the workload. Profile proves you are interesting. Essays are where you explain the 'Why.' If your activities tell a focused story, your essay writes itself."</p>
+
+            <h3 style="color: #b91c1c; border-top: 1px solid #fecaca; padding-top: 1.5rem; margin-top: 2rem;">8. The Common App Timeline</h3>
+            <p><strong>Speaker:</strong> "August to October is the 'Golden Quarter.' You cannot start an NGO in September and expect it to look real. The work you do <em>today</em> determines how much you sleep next October."</p>
+
+            <h3 style="color: #b91c1c; border-top: 1px solid #fecaca; padding-top: 1.5rem; margin-top: 2rem;">9. The Closing (The Call to Action)</h3>
+            <span class="cue" style="color: #dc2626; font-style: italic; background: #fee2e2; padding: 2px 6px; border-radius: 4px; font-size: 0.9rem;">(Step forward. Lower your voice slightly for emphasis.)</span>
+            <p><strong>Speaker:</strong> "Stop trying to be the student you <em>think</em> they want. Ask: 'If college didn’t exist, what would I be doing?' Find that thing. Get good at it. Make a difference. Don't build a profile. Build a brand. Thank you."</p>
         </div>
+    </section>
 
-        <!-- SECTION 10 -->
-        <div class="card">
-            <div class="card-header">
-                <div class="card-title">What SAT Really Is</div>
-                <svg class="icon-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </div>
-            <div class="card-content">
-                <div class="content-inner">
-                    <ul class="bullet-list">
-                        <li>A global academic benchmark</li>
-                        <li>Used to compare students worldwide</li>
-                        <li>Important for admissions + scholarships</li>
-                    </ul>
-
-                    <div class="vs-grid" style="margin-top: 1.5rem;">
-                        <div class="vs-card">
-                            <h4 style="color: var(--primary-color);">Strong Score:</h4>
-                            <p>SAT: 1400+ strong, 1500+ elite</p>
-                        </div>
-                        <div class="vs-card">
-                            <h4 style="color: var(--primary-color);">Prep Time:</h4>
-                            <p>4–6 months</p>
-                        </div>
-                    </div>
-
-                    <p class="quote">“SAT gets you noticed globally.”</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- SECTION 11 -->
-        <div class="card">
-            <div class="card-header">
-                <div class="card-title">Common App Timeline</div>
-                <svg class="icon-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </div>
-            <div class="card-content">
-                <div class="content-inner">
-                    <div class="timeline">
-                        <div class="timeline-item">
-                            <div class="timeline-title">August 1 — Portal Opens</div>
-                            <ul class="bullet-list" style="margin-bottom: 0;">
-                                <li>Create account</li>
-                                <li>Start profile</li>
-                                <li>Choose essay prompt</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="timeline-item">
-                            <div class="timeline-title">August–September</div>
-                            <ul class="bullet-list" style="margin-bottom: 0;">
-                                <li>Write essays</li>
-                                <li>Build activities section</li>
-                            </ul>
-                        </div>
-
-                        <div class="timeline-item">
-                            <div class="timeline-title">October</div>
-                            <ul class="bullet-list" style="margin-bottom: 0;">
-                                <li>Finalize application</li>
-                                <li>Prepare for early deadlines</li>
-                            </ul>
-                        </div>
-
-                        <div class="timeline-item">
-                            <div class="timeline-title">November</div>
-                            <p>Submit Early Action / Early Decision</p>
-                        </div>
-
-                        <div class="timeline-item">
-                            <div class="timeline-title">December</div>
-                            <p>Final polishing</p>
-                        </div>
-
-                        <div class="timeline-item">
-                            <div class="timeline-title">January</div>
-                            <p>Regular deadlines</p>
-                        </div>
-
-                        <div class="timeline-item">
-                            <div class="timeline-title">March–April</div>
-                            <p>Decisions arrive</p>
-                        </div>
-
-                        <div class="timeline-item">
-                            <div class="timeline-title">May 1</div>
-                            <p>Final university selection</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- SECTION 12 -->
-        <div class="card">
-            <div class="card-header">
-                <div class="card-title">Final Thought</div>
-                <svg class="icon-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </div>
-            <div class="card-content">
-                <div class="content-inner">
-                    <p class="quote">“You don’t need money. You don’t need connections. You need direction — starting today.”</p>
-                    
-                    <p class="quote">“You can build a random profile…<br>or build a story that gets you into top universities.”</p>
-                    
-                    <p class="quote" style="border-left-color: var(--correct-color); color: var(--text-main);">
-                        <strong>“The difference starts with what you do after today.”</strong>
-                    </p>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
+</main>
 
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const accordion = document.getElementById('accordion');
-        const cards = accordion.querySelectorAll('.card');
-        const expandAllBtn = document.getElementById('expandAll');
-        const collapseAllBtn = document.getElementById('collapseAll');
-        let isAllExpanded = false;
+    // Smooth scrolling active state update
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-links a');
 
-        function setMaxHeight(card) {
-            const content = card.querySelector('.card-content');
-            if (card.classList.contains('active')) {
-                content.style.maxHeight = content.scrollHeight + 'px';
-            } else {
-                content.style.maxHeight = null;
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (pageYOffset >= (sectionTop - 150)) {
+                current = section.getAttribute('id');
             }
-        }
+        });
 
-        function toggleCard(card, forceExpand = null) {
-            const isCurrentlyActive = card.classList.contains('active');
-            const shouldExpand = forceExpand !== null ? forceExpand : !isCurrentlyActive;
-
-            if (shouldExpand) {
-                card.classList.add('active');
-            } else {
-                card.classList.remove('active');
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').includes(current)) {
+                link.classList.add('active');
             }
-            setMaxHeight(card);
-        }
-
-        // Initialize the first card as active
-        if(cards.length > 0) {
-            // small delay to let DOM paint so scrollHeight is accurate
-            setTimeout(() => {
-                setMaxHeight(cards[0]);
-            }, 50);
-        }
-
-        cards.forEach(card => {
-            const header = card.querySelector('.card-header');
-            
-            header.addEventListener('click', () => {
-                // If accordion mode (not manually expanded all), close others
-                if (!isAllExpanded && !card.classList.contains('active')) {
-                    cards.forEach(otherCard => {
-                        if (otherCard !== card && otherCard.classList.contains('active')) {
-                            toggleCard(otherCard, false);
-                        }
-                    });
-                }
-                
-                toggleCard(card);
-                
-                // Update state if things are mixed
-                const activeCount = document.querySelectorAll('.card.active').length;
-                if (activeCount === cards.length) {
-                    isAllExpanded = true;
-                } else {
-                    isAllExpanded = false;
-                }
-            });
-        });
-
-        expandAllBtn.addEventListener('click', () => {
-            isAllExpanded = true;
-            cards.forEach(card => toggleCard(card, true));
-        });
-
-        collapseAllBtn.addEventListener('click', () => {
-            isAllExpanded = false;
-            cards.forEach(card => toggleCard(card, false));
-        });
-
-        // Recalculate max-height on window resize for active cards
-        window.addEventListener('resize', () => {
-            cards.forEach(card => {
-                if (card.classList.contains('active')) {
-                    setMaxHeight(card);
-                }
-            });
         });
     });
 </script>
+
 </body>
 </html>
